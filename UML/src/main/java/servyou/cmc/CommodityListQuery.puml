@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+
+start
+:根据商品列表搜索条件查询商品信息列表;
+:列表中的商品保留最新版本的一条;
+partition 遍历商品列表 {
+:商品关联的版本列表中，保留历史版本最大的商品版本;
+:查询业务审核记录表，判断审核状态;
+if(是否存在历史申请审核) then(存在)
+:审核申请信息 = 业务操作类型 + 审核状态;
+else(不存在)
+endif
+
+}
+:组装结果并返回;
+note right:按更新时间倒序分页展示，默认展示20条。
+stop
+
+@enduml

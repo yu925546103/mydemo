@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+
+start
+:从缓存中获取商品下拉选项和规则定义;
+if(命中缓存?) then(否)
+:获得平台列表，客户类型，商品类型的枚举定义;
+:获取消费方式规则定义;
+note right:定义在iris配置中
+:组装结果，加入缓存;
+note right:缓存时间设置2h
+else(是)
+endif
+:返回结果;
+stop
+
+@enduml

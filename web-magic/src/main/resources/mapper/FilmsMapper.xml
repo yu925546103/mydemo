@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.FilmsMapper" >
+  <resultMap id="BaseResultMap" type="com.entity.Films" >
+    <id column="idFilm" property="idfilm" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="yr" property="yr" jdbcType="VARCHAR" />
+    <result column="poster" property="poster" jdbcType="VARCHAR" />
+    <result column="avgRating" property="avgrating" jdbcType="DOUBLE" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="director" property="director" jdbcType="VARCHAR" />
+    <result column="leadactors" property="leadactors" jdbcType="VARCHAR" />
+    <result column="typelist" property="typelist" jdbcType="VARCHAR" />
+    <result column="backpost" property="backpost" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from films
+    where idFilm = #{idfilm,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.entity.Films" >
+    insert into films (idFilm, title, yr, 
+      poster, avgRating, description, 
+      director, leadactors, typelist, 
+      backpost)
+    values (#{idfilm,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{yr,jdbcType=VARCHAR}, 
+      #{poster,jdbcType=VARCHAR}, #{avgrating,jdbcType=DOUBLE}, #{description,jdbcType=VARCHAR}, 
+      #{director,jdbcType=VARCHAR}, #{leadactors,jdbcType=VARCHAR}, #{typelist,jdbcType=VARCHAR}, 
+      #{backpost,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.entity.Films" >
+    update films
+    set title = #{title,jdbcType=VARCHAR},
+      yr = #{yr,jdbcType=VARCHAR},
+      poster = #{poster,jdbcType=VARCHAR},
+      avgRating = #{avgrating,jdbcType=DOUBLE},
+      description = #{description,jdbcType=VARCHAR},
+      director = #{director,jdbcType=VARCHAR},
+      leadactors = #{leadactors,jdbcType=VARCHAR},
+      typelist = #{typelist,jdbcType=VARCHAR},
+      backpost = #{backpost,jdbcType=VARCHAR}
+    where idFilm = #{idfilm,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select idFilm, title, yr, poster, avgRating, description, director, leadactors, typelist, 
+    backpost
+    from films
+    where idFilm = #{idfilm,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select idFilm, title, yr, poster, avgRating, description, director, leadactors, typelist, 
+    backpost
+    from films
+  </select>
+</mapper>

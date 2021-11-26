@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+:入参校验;
+:根据商品编码和商品历史版本号查询商品基础信息;
+:查询关联的业务审核记录表;
+if(业务操作类型==商品修改 || 业务操作类型==商品版本修改)
+:返回修改内容;
+endif
+:查询业务记录表关联的审核记录;
+:组装结果;
+stop
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+:根据名称提取beanName;
+:new page;
+
+if (检查缓存或实例工厂中是否存在实例?) then (存在)
+  :返回对应的实例;
+else
+if(是否可处理的循环依赖?) then(是)
+
+else
+end
+endif
+endif
+
+stop
+
+@enduml

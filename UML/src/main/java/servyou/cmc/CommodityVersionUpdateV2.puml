@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+
+start
+:校验必传字段;
+partition 商品版本校验 {
+:校验关联的平台产品是否可售（已上架且为销售);
+if(存在数量属性？) then(存在)
+:校验属性是否被停用;
+note left:仅功能服务不存在数量属性
+endif
+}
+:查询商品的基本信息;
+:查询商品关联的审核记录;
+:校验是否商品是否存在审核中的申请，存在则报错;
+if(商品状态 == 待上架 || 商品状态 == 已下架) then(true)
+partition 保存商品版本,遍历商品版本列表 {
+:保存商品版本信息，生成商品版本编码和历史版本;
+:批量保存平台产品列表，销售规则;
+partition 遍历定价策略列表 {
+:保存定价策略;
+:批量保存定价策略内容列表，定价策略id = 定价策略主键;
+}
+}
+else(false)
+:保存到业务变更记录表，业务场景==增加商品版本;
+:调用审核流，发起审核;
+:记录审核信息;
+endif
+stop
+
+@enduml

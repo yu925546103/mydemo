@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+
+start
+:入参校验;
+:根据商品编码查询最新版本的商品基础信息;
+:查询商品关联的sku信息列表;
+:查询sku的关联平台信息;
+if(存在销售规则) then(true)
+:查询sku关联的销售规则信息;
+endif
+:查询sku的定价策略，组装定价策略数据;
+:组装参数并返回结果;
+
+stop
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+
+start
+:校验关联的类目是否可用，类目停用则报错;
+:校验关联的属性是否可用，属性停用则报错;
+:校验商品是否存在审核中的申请，存在则报错;
+if(商品至少存在一个版本信息?) then(存在)
+else(不存在)
+#red:商品至少需要一个版本;
+end
+endif
+:保存变更内容到业务记录表;
+if(商品状态==待上架 || 商品状态==已下架) then(true)
+:更新商品基础信息及其关联信息，商品的历史版本升版;
+:对商品关联的商品版本的历史版本升版;
+else(false)
+:发起审核流程;
+:流程信息保存到审核信息表中，与业务记录表关联;
+endif
+stop
+
+@enduml

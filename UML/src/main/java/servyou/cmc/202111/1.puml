@@ -1,0 +1,12 @@
+@startuml
+map 商品sku信息表cmc_sku_item {
+ sku_row1 => sku编码 code=111 version_id=111
+}
+
+map 商品sku属性模块cmc_sku_module {
+ sku_row1 => sku编码 code=111 version_id=111
+}
+@enduml
+
+
+sudo port install graphviz

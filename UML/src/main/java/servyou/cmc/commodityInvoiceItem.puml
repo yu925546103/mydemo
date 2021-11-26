@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+
+start
+#pink:入参校验;
+:根据销货方id查询dzfp_sp_xhf，状态为启用;
+:根据开票项目id去重;
+:开票项目id查询dzfp_sp，状态为启用;
+:组装结果返回;
+stop
+
+@enduml

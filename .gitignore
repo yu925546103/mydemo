@@ -1,0 +1,6 @@
+# Project exclude paths
+/leetcode/target/
+/OnJava8/target/
+/Spring/target/
+/threadDemo/target/
+/web-magic/target/

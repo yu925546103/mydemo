@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+'zk发布与订阅的流程'
+start
+if (客户端第一次连接注册中心?) then (true)
+  :拉取对应目录下全量数据;
+  :在订阅的节点上注册一个watcher;
+  endif
+
+  repeat:客户端与注册中心保持TCP长连接;
+  repeat while(节点数据发生变化?)
+      :版本号变化，通知watcher事件;
+      :watcher回调主动通知客户端;
+      :客户端接到通知，拉取对应节点下全量数据（NotifyListener#notify）;
+
+stop
+
+@enduml
