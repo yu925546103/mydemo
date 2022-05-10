@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+:保存商品基础信息到cmc_commodity_base，生成商品的id和version;
+:保存商品类目项,cmc_commodity_category_scope;
+if(存在商品业务约束?) then(true)
+:保存商品的业务约束, cmc_commodity_constraint;
+endif
+:批量保存商品规格信息，cmc_specification_item;
+:批量保存商品规格的销售规则, cmc_specification_sales_rule;
+if(存在商品规格属性?) then(true)
+:批量保存商品规格属性,cmc_specification_attribute_scope;
+:批量保存规格属性定义，cmc_specification_attribute_define;
+endif
+:批量保存sku信息, cmc_sku_item;
+:批量保存sku关联产品模块范围，cmc_sku_product_module_scope;
+:批量保存sku计价模块，cmc_sku_pricing_module;
+:批量保存定价策略,cmc_sku_pricing_strategy;
+if(存在规格选择的是数量属性) then(true)
+:批量保存到属性模块范围，cmc_sku_attribute_item_scope;
+endif
+if(无属性或属性是枚举) then(true)
+:批量保存到属性模块枚举，cmc_sku_attribute_item_enum;
+endif
+:批量保存到sku模块属性，cmc_sku_module_attribute;
+stop
+
+@enduml

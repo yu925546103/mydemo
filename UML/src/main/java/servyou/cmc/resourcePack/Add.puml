@@ -1,0 +1,71 @@
+@startuml
+object 商品规格信息表cmc_specification_item{
+
+}
+
+
+object 商品规格属性cmc_specification_attribute_scope{
+
+}
+
+object 商品规格属性定义表cmc_specification_attribute_define{
+
+}
+
+object 商品属性信息表cmc_attribute {
+
+}
+
+
+object 商品sku信息表cmc_sku_item{
+
+}
+
+object 商品sku计价模块cmc_sku_pricing_module{
+
+}
+
+object 商品sku定价策略cmc_sku_pricing_strategy {
+
+}
+
+object 商品sku属性模块范围cmc_sku_attribute_item_scope {
+
+}
+
+object 商品sku模块属性cmc_sku_module_attribute {
+
+}
+
+object 商品sku属性模块枚举cmc_sku_attribute_item_enum {
+
+}
+
+object 商品sku关联产品模块范围表cmc_sku_product_module_scope {
+
+}
+
+
+商品规格信息表cmc_specification_item -- 商品sku信息表cmc_sku_item
+商品规格信息表cmc_specification_item -- 商品规格属性cmc_specification_attribute_scope
+商品规格属性cmc_specification_attribute_scope -- 商品属性信息表cmc_attribute
+
+商品规格属性cmc_specification_attribute_scope -- 商品规格属性定义表cmc_specification_attribute_define
+
+
+
+商品sku信息表cmc_sku_item --  商品sku计价模块cmc_sku_pricing_module
+商品sku信息表cmc_sku_item -- 商品sku关联产品模块范围表cmc_sku_product_module_scope
+商品sku计价模块cmc_sku_pricing_module -- 商品sku属性模块枚举cmc_sku_attribute_item_enum
+商品sku计价模块cmc_sku_pricing_module -- 商品sku模块属性cmc_sku_module_attribute
+商品sku计价模块cmc_sku_pricing_module -- 商品sku属性模块范围cmc_sku_attribute_item_scope
+商品sku计价模块cmc_sku_pricing_module -- 商品sku定价策略cmc_sku_pricing_strategy
+
+'商品sku属性模块枚举cmc_sku_attribute_item_enum -- 商品属性信息表cmc_attribute
+'商品sku属性模块范围cmc_sku_attribute_item_scope -- 商品属性信息表cmc_attribute
+
+
+@enduml
+
+
+@enduml

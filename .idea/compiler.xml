@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JAVA" />
+        <module name="web-magic" />
+        <module name="UML" />
+        <module name="dubbo-provider" />
         <module name="leetcode" />
         <module name="thread" />
-        <module name="web-magic" />
         <module name="Spring" />
-        <module name="UML" />
+        <module name="dubbo-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">

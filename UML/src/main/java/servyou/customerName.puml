@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+if(订单fzgsdm == 新疆 && 同一批次下订单的去重khid数 == 1) then(是)
+:根据Khid 查询单位客户信息;
+if(是否查询到单位客户信息?) then(是)
+:返回单位客户的customerName;
+else(否)
+:根据Khid 查询中介信息;
+endif
+end;
+else(否)
+partition 原逻辑 {
+if(是否代理用户下单?) then(是)
+:根据dlyhId 查询 customerName;
+else(否)
+:根据Khid 查询单位客户信息;
+if(是否查询到单位客户信息?) then(是)
+:返回单位客户的customerName;
+else(否)
+:根据Khid 查询中介信息;
+endif
+endif
+partition 发送短信场景 {
+if(同一订单批次下存在多个订单)
+:customerName拼接"等";
+endif
+}
+}
+
+
+
+stop
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+#pink:入参校验;
+
+if(存在name) then(true)
+:name全模糊匹配;
+endif
+:返回结果;
+stop
+
+@enduml

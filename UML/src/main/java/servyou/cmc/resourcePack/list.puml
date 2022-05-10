@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+#pink:入参校验;
+:根据入参，分页查询资源包列表;
+:查询资源包属性拓展;
+:查询资源包单位配置信息;
+:组装结果返回;
+stop
+
+@enduml

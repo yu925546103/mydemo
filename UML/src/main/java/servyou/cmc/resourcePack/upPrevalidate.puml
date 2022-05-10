@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+:入参校验;
+:同前置校验，进行二次校验;
+:记录业务变更信息;
+:发起工作流审核，记录审核实例id;
+:记录审核信息，审核状态待审核;
+stop
+
+@enduml

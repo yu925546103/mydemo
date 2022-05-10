@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+:入参必填校验;
+:根据资源包id查询资源包详情;
+:根据平台产品模块，查询平台产品模块的信息;
+:根据单位编码，查询关联的单位信息;
+:根据id，查询关联的资源包扩展属性;
+:组装结果返回;
+
+stop
+@enduml
+
+
+object 商品规格属性cmc_specification_attribute_scope{
+row1 => id=11;specification_code=10001;specification_version=1111;attribute_code=CS;
+}
+
+object 商品规格属性定义表cmc_specification_attribute_define{
+row1 => specification_attribute_code=10001;attribute=enumValue-枚举值;attribute_data=1;
+}
+
+object 商品属性信息表cmc_attribute {
+row1 => id=1;code=CS;type=2-枚举;
+}
+
+商品规格信息表cmc_specification_item -- 商品规格属性cmc_specification_attribute_scope
+商品规格属性cmc_specification_attribute_scope -- 商品属性信息表cmc_attribute
+
+商品规格属性cmc_specification_attribute_scope -- 商品规格属性定义表cmc_specification_attribute_define

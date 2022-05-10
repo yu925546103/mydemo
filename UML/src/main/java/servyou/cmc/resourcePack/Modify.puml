@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+skinparam Activity {
+	BorderColor Black
+	BackgroundColor PHYSICAL
+}
+
+start
+:入参校验;
+:同前置校验，进行二次校验;
+:仅更新资源包名称和资源包描述;
+stop
+
+@enduml
